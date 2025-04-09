@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRAKTIKUM SIG BERBASIS WEB</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+
+    <style>
+        .hero-section {
+            height: 100vh;
+            background: url("fotobackground.jpg") no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .container {
+            position: relative;
+            z-index: 2;
+        }
+        .text-white {
+            color: #fff;
+        }
+        .btn-primary {
+            background-color: #5a7d7c;
+            border-color: #5a7d7c;
+        }
+        .btn-primary:hover {
+            background-color: #4a6b6b;
+            border-color: #4a6b6b;
+        }
+        #map {
+            height: 500px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section d-flex align-items-center justify-content-center text-center">
+        <div class="container">
+            <h1 class="display-3 text-white fw-bold">PRAKTIKUM SISTEM INFORMASI GEOGRAFIS BERBASIS WEB</h1>
+            <h3 class="text-white lead"><strong><em>Ujian Tengah Semester</em></strong></h3>
+            <a href="cv.html" class="btn btn-primary btn-lg mt-3">Curriculum Vitae</a>
+            <a href="https://geodesi.ugm.ac.id/" class="btn btn-primary btn-lg mt-3">Website Teknik Geodesi</a>
+        </div>
+    </div>
+
+    <!-- Pop-up Tugas -->
+    <div class="container text-center my-5">
+        <h2 class="mb-4">My Works</h2>
+        <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalMinggu1">Tugas Minggu Kedua</button>
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalMinggu2">Tugas Minggu Ketiga</button>
+            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalMinggu3">Tugas Minggu Keenam</button>
+        </div>
+    </div>
+
+    <!-- Modal Tugas -->
+    <div class="modal fade" id="modalMinggu1" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content p-4">
+                <h5 class="modal-title mb-3">Tugas Minggu Kedua</h5>
+                <table class="table table-bordered">
+                    <thead><tr><th>Latihan</th><th>Link</th></tr></thead>
+                    <tbody>
+                        <tr><td>Latihan 1</td><td><a href="latihan1.html">Buka</a></td></tr>
+                        <tr><td>Latihan 2</td><td><a href="latihan2.html">Buka</a></td></tr>
+                        <tr><td>Latihan 3</td><td><a href="latihan3.html">Buka</a></td></tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalMinggu2" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content p-4">
+                <h5 class="modal-title mb-3">Tugas Minggu Ketiga</h5>
+                <table class="table table-bordered">
+                    <thead><tr><th>Latihan</th><th>Link</th></tr></thead>
+                    <tbody>
+                        <tr><td>Latihan 1</td><td><a href="latihan21.html">Buka</a></td></tr>
+                        <tr><td>Latihan 2</td><td><a href="latihan22.html">Buka</a></td></tr>
+                        <tr><td>Latihan 3</td><td><a href="latihan23.html">Buka</a></td></tr>
+                        <tr><td>Latihan 4</td><td><a href="latihan24.html">Buka</a></td></tr>
+                        <tr><td>Latihan 5</td><td><a href="latihan25.html">Buka</a></td></tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalMinggu3" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content p-4">
+                <h5 class="modal-title mb-3">Tugas Minggu Keenam</h5>
+                <table class="table table-bordered">
+                    <thead><tr><th>Latihan</th><th>Link</th></tr></thead>
+                    <tbody>
+                        <tr><td>Membuat Leaflet</td><td><a href="bismillahleaflet.html">Buka</a></td></tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Validasi -->
+    <div class="container my-5">
+        <h3 style="color:rgb(4, 60, 27);"><b>Formulir Validasi Pekerjaan Selesai</b></h3>
+        <form>
+            <label for="password">Masukkan Kata Sandi:</label>
+            <input type="password" id="password" name="password">
+            <br>
+            <input type="button" class="btn btn-info mt-2" value="Validasi" onclick="validateForm()">
+        </form>
+    </div>
+
+    <!-- Tabel Identitas -->
+    <table class="table table-bordered w-50 mx-auto mt-4">
+        <tr><th>Nama</th><td>Talitha Syahda Fausta</td></tr>
+        <tr><th>NIM</th><td>22/493155/TK/54004</td></tr>
+    </table>
+
+    <!-- Peta Leaflet -->
+    <div class="container">
+        <h3 class="text-center mt-5 mb-3">PETA 3 TEMPAT FAVORIT DI UGM</h3>
+        <div id="map"></div>
+    </div>
+
+    <!-- Bootstrap & Leaflet JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script>
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            if (password === "Selesai") {
+                alert("Pekerjaan telah selesai!");
+            } else {
+                alert("Eror: Kata sandi salah. Pekerjaan belum selesai.");
+            }
+        }
+
+        // Leaflet Map
+        var map = L.map('map').setView([-7.766728, 110.376651], 16);
+
+        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors, HOT'
+        });
+
+        var openTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenTopoMap'
+        });
+
+        var kampus = L.layerGroup([
+            L.marker([-7.763839, 110.372721]).bindPopup('<b>Teknik Geodesi<br><img src="fotogeodesi.jpg" width="164" height="142"><br>★★★★★ (5/5) <br><a href="https://maps.app.goo.gl/SsXvcZmzTf1D6ZsU9" target="_blank">Lokasi</a>'),
+            L.marker([-7.770224, 110.378014]).bindPopup('<b>Gedung Grha Sabha Pramana<br><img src="fotogsp.jpg" width="164" height="142"><br>★★★★★ (5/5)<br><a href="https://maps.app.goo.gl/mS9SDVgnPkDPzgvY9" target="_blank">Lokasi</a>'),
+            L.marker([-7.769222, 110.383774]).bindPopup('<b>Gor Pancasila UGM<br><img src="fotopancas.jpeg" width="164" height="142"><br>★★★★★ (5/5) <br><a href="https://maps.app.goo.gl/L67gsf27uzXg5u1V7" target="_blank">Lokasi</a>'),
+
+        ]).addTo(map);
+
+        var baseMaps = {
+            "OpenStreetMap": osm,
+            "OpenStreetMap.HOT": osmHOT,
+            "OpenTopoMap": openTopoMap
+        };
+
+        var overlayMaps = {
+            "Tempat Favorit": kampus
+        };
+
+        L.control.layers(baseMaps, overlayMaps).addTo(map);
+    </script>
+</body>
+</html>
